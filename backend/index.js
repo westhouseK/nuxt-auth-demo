@@ -35,7 +35,7 @@ app.get('/api/auth/user/',(req,res) => {
   const bearer = bearToken.split(' ')
   const token = bearer[1]
 
-  jwt.verify(token,'secret',(err,user)=>{
+  jwt.verify(token,'secret',(err,user) => {
     if(err){
       return res.sendStatus(403)
     }else{
@@ -44,7 +44,7 @@ app.get('/api/auth/user/',(req,res) => {
           });
     }
   })
-});
+})
 // ユーザを取得できるかのテスト
 app.get("/api/users", (req, res, next) => {
   
@@ -57,8 +57,8 @@ app.get("/api/users", (req, res, next) => {
       "message": "success",
       "data": rows
     })
-  });
-});
+  })
+})
 
 // POST
 // ユーザの登録

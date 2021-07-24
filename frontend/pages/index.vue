@@ -20,7 +20,7 @@
         </nav>
       </div>
       <div v-if="$auth.loggedIn">
-        <button @click="$auth.logout()">About</button>
+        <nuxt-link to="/about">About</nuxt-link>
       </div>
       <div v-if="$auth.loggedIn">
         <button @click="$auth.logout()">Logout</button>
