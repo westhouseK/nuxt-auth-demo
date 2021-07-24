@@ -1,9 +1,10 @@
 const express = require('express')
+const cors = require('cors')
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const app = express().use(express.json()) // jsonをパースする
+const app = express().use(express.json()).use(cors()) // jsonをパースする, cros対応する
 const port = 5000
 const saltRounds = 10
 
@@ -25,6 +26,10 @@ app.get('/jwttest', (req, res) => {
 })
 // JWTが一致するかのテスト
 app.get('/api/auth/user/',(req,res) => {
+
+  // デバッグ用
+  // const headers = req.headers
+  // return console.log(headers)
 
   const bearToken = req.headers['authorization']
   const bearer = bearToken.split(' ')
@@ -58,6 +63,7 @@ app.get("/api/users", (req, res, next) => {
 // POST
 // ユーザの登録
 app.post('/api/auth/register/', (req, res) => {
+
   const insert = 'INSERT INTO USERS (name, email, password) VALUES (?,?,?)'
   bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
     db.run(insert, [req.body.name,req.body.email,hash],(err) => {
@@ -74,6 +80,10 @@ app.post('/api/auth/register/', (req, res) => {
 
 // ログイン機能
 app.post('/api/auth/login/',(req,res) => {
+
+  // デバック用
+  // return console.log(req.body)
+  
   const sql = 'select * from users where email = ?'
   const params = [req.body.email]
   db.get(sql, params, (err, user) => {
