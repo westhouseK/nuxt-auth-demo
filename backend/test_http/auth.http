@@ -1,0 +1,2 @@
+GET http://127.0.0.1:5000/api/auth/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InRhcm8iLCJlbWFpbCI6InRhcm9AdGVzdC5jb20iLCJpYXQiOjE2MjcwOTkzMTN9.jTl97yykUU-FKvDEFmdkcCwwZUfv7BRkdQfWyvyXF4M
